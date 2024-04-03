@@ -1,0 +1,5 @@
+$(if http-header == "Content-Type")application/json$(endif)
+$(if http-header == "Access-Control-Allow-Origin")*$(endif)
+{
+	"isConnected": "$(logged-in)"
+}

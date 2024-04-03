@@ -1,0 +1,11 @@
+$(if http-header == "Content-Type")application/json$(endif)
+$(if http-header == "Access-Control-Allow-Origin")*$(endif)
+{
+	"isConnected": "$(logged-in)",
+	"ip": "$(ip)",
+	"uptime": $(uptime-secs),
+	"timeleft": "$(session-time-left)",
+	"error": "$(error)",
+	"loginLink": "$(link-login)",
+	"origLink": "$(link-orig)"
+}
