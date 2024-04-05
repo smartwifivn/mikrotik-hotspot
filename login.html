@@ -3,7 +3,7 @@ $(if http-header == "Access-Control-Allow-Origin")*$(endif)
 <title>WiFi Login</title>
 </head>
 <body>
-<form name="redirect" action="$(server-name)" method="GET">
+<form name="redirect" action="https://wifibiz.net/wifi/$(server-name)" method="GET">
   <input type="hidden" name="res" value="notyet" />
   <input type="hidden" name="mac" value="$(mac)" />
   <input type="hidden" name="user" value="$(username)" />
