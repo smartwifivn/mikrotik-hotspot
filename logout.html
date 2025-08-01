@@ -1,0 +1,41 @@
+<html><head>
+<title>WiFi Logout</title>
+</head>
+<body>
+  <form name="redirect" action="$(server-name)" method="GET">
+    <input type="hidden" name="res" value="notyet" />
+    <input type="hidden" name="mac" value="$(mac)" />
+    <input type="hidden" name="userurl" value="$(link-orig)" />
+    <input type="hidden" name="link-login-only" value="$(link-login-only)" />
+    <input type="hidden" name="nasid" value="$(identity)" />
+    <input type="hidden" name="uamip" value="$(server-address)" />
+    <input type="hidden" name="ip" value="$(ip)">
+    <input type="hidden" name="error" value="$(error)" />
+    <input type="hidden" name="chap-id" value="$(chap-id)" />
+    <input type="hidden" name="chap-challenge" value="$(chap-challenge)" />
+  </form>
+
+  <script>
+    // document.redirect.submit();
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    (function () {
+      var username = getParameterByName('username');
+      var password = getParameterByName('password');
+
+      if (username && password) {
+        window.location.replace("$(link-login-only)?username=" + username + "&password=" + password);
+      } else {
+        document.redirect.submit();
+      }
+    })();
+  </script>
+</body>
+</html>
